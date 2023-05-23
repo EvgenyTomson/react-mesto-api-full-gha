@@ -1,0 +1,13 @@
+.register {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 60px;
+}
+
+@media screen and (max-width: 580px) {
+  .register {
+    padding-top: 40px;
+  }
+}

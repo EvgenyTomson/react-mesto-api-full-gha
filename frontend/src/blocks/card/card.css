@@ -1,0 +1,13 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  max-width: 282px;
+}
+
+@media screen and (max-width: 936px) {
+  .card {
+    max-width: 100%;
+  }
+}

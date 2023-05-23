@@ -1,0 +1,9 @@
+.register__submit_disabled {
+  opacity: .3;
+  cursor: default;
+}
+
+.register__submit_disabled:hover {
+  opacity: .3;
+  cursor: default;
+}
