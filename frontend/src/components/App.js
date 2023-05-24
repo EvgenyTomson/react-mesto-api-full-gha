@@ -45,9 +45,7 @@ function App() {
     if(loggedIn && currentEmail) {
       setIsLoaderOpen(true);
       Promise.all([api.getUserData(), api.getInitialCards()])
-      // api.getInitialCards()
         .then(([userData, initialCardsData]) => {
-        // .then((initialCardsData) => {
           setCurrentUser(userData);
           setCards(initialCardsData);
         })
@@ -172,13 +170,8 @@ function App() {
   }
 
   const onUserLogin = (email) => {
-  // const onUserLogin = (userData) => {
     setLoggedIn(true);
     setCurrentEmail(email);
-    // setCurrentEmail(userData.email);
-
-    // setCurrentUser(userData);
-
     navigate("/", {replace: true});
   }
 
@@ -189,7 +182,6 @@ function App() {
       auth.reEnter(jwt)
         .then((data) => {
           onUserLogin(data.email);
-          // onUserLogin(data);
         })
         .catch((error) => {
           console.error(error);
@@ -214,7 +206,6 @@ function App() {
         if (data.token) {
           localStorage.setItem('token', data.token);
           onUserLogin(formData.email);
-          // onUserLogin(formData);
         }
       })
       .catch((error) => {
