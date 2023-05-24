@@ -8,7 +8,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.60.154
+IP 158.160.60.154
 
 Frontend https://tomson.students.nomoredomains.monster
 
