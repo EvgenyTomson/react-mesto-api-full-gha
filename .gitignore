@@ -23,6 +23,7 @@ node_modules
 
 # production
 /build
+/mesto-frontend
 
 # misc
 .DS_Store
