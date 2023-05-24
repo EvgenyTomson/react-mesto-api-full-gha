@@ -10,16 +10,16 @@ const catchErrorsMiddleware = require('./middlewares/catchErrors');
 const { requestLogger } = require('./middlewares/logger');
 
 const allowedCors = [
-  'localhost',
-  'localhost:3001',
+  'https://tomson.students.nomoredomains.monster',
+  'http://tomson.students.nomoredomains.monster',
+  'localhost:3000',
   'http://localhost',
   'http://localhost:3001',
-  'http://localhost:3001/',
+  'http://localhost:3000',
 ];
 
 const corsOptions = {
-  // origin: allowedCors,
-  // maxAge: 30,
+  origin: allowedCors,
   optionsSuccessStatus: 200,
 };
 
