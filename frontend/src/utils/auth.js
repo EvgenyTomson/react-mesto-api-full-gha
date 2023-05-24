@@ -1,7 +1,7 @@
 const authOptions = {
   // baseUrl: 'https://auth.nomoreparties.co',
   // baseUrl: 'http://localhost:3000',
-  baseUrl: 'http://api.tomson.students.nomoredomains.monster',
+  baseUrl: 'https://api.tomson.students.nomoredomains.monster',
   headers: {
     'Content-Type': 'application/json',
   }

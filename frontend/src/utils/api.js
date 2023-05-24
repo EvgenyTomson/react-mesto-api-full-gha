@@ -1,7 +1,7 @@
 const apiOptions = {
   // baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-60',
   // baseUrl: 'http://localhost:3000',
-  baseUrl: 'http://api.tomson.students.nomoredomains.monster',
+  baseUrl: 'https://api.tomson.students.nomoredomains.monster',
   headers: {
     'Content-Type': 'application/json'
   }
