@@ -5,13 +5,14 @@ const NotFoundError = require('../errors/notFoundError');
 const cardsRouter = require('./cards');
 const usersRouter = require('./users');
 
-const { login, createUser } = require('../controllers/users');
+const { login, createUser, logout } = require('../controllers/users');
 const { createUserJoi, loginJoi } = require('../middlewares/celebrate');
 const authMiddleware = require('../middlewares/auth');
 const { errorLogger } = require('../middlewares/logger');
 
 router.post('/signin', loginJoi, login);
 router.post('/signup', createUserJoi, createUser);
+router.get('/signout', logout);
 
 router.use(authMiddleware);
 router.use('/users', usersRouter);

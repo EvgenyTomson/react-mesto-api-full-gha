@@ -71,7 +71,6 @@ module.exports.createUser = (req, res, next) => {
 };
 
 module.exports.login = (req, res, next) => {
-  // console.log('LOGIN');
   const { email, password } = req.body;
 
   User.findOne({ email }).select('+password')
@@ -92,7 +91,13 @@ module.exports.login = (req, res, next) => {
             { expiresIn: '7d' },
           );
 
-          return res.send({ token });
+          res.cookie('jwt', token, {
+            maxAge: 7 * 24 * 60 * 60 * 1000,
+            httpOnly: true,
+            saneSite: true,
+          })
+
+          return res.send(user.toJSON({ useProjection: true }));
         });
     })
 
@@ -107,4 +112,8 @@ module.exports.updateUser = (req, res, next) => {
 module.exports.updateAvatar = (req, res, next) => {
   const { avatar } = req.body;
   return changeUserData(req.user._id, { avatar }, res, next);
+};
+
+module.exports.logout = (req, res) => {
+  res.clearCookie('jwt').send({ message: 'Bye!' });
 };

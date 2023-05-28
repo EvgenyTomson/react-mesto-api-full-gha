@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 
 const { PORT, DB_URI } = require('./config');
 
@@ -21,6 +22,7 @@ const allowedCors = [
 const corsOptions = {
   origin: allowedCors,
   optionsSuccessStatus: 200,
+  credentials: true,
 };
 
 app.use(express.json());
@@ -29,13 +31,9 @@ mongoose.connect(DB_URI, {});
 
 app.use(requestLogger);
 
-app.use(cors(corsOptions));
+app.use(cookieParser());
 
-app.get('/crash-test', () => {
-  setTimeout(() => {
-    throw new Error('Сервер сейчас упадёт');
-  }, 0);
-});
+app.use(cors(corsOptions));
 
 app.use('/', require('./routes/index'));
 

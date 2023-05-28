@@ -46,7 +46,6 @@ module.exports.createCard = (req, res, next) => {
 
 module.exports.addLikeCard = (req, res, next) => {
   Card.findByIdAndUpdate(req.params.cardId, { $addToSet: { likes: req.user._id } }, { new: true })
-    // .populate('likes')
     .orFail()
     .then((card) => res.status(200).send(card))
     .catch((err) => {
