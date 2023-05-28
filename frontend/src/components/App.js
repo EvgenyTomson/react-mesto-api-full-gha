@@ -118,7 +118,6 @@ function App() {
   }
 
   const handleCardLike = (card) => {
-    // const isLiked = card.likes.some(like => like._id === currentUser._id);
     const isLiked = card.likes.some(id => id === currentUser._id);
     api.toggleCardLikeStatus(card._id, isLiked)
       .then((updatedCard) => {
@@ -176,10 +175,10 @@ function App() {
   }
 
   const tokenCheck = () => {
-    const jwt = localStorage.getItem('token');
+    const id = localStorage.getItem('token');
 
-    if(jwt) {
-      auth.reEnter(jwt)
+    if(id) {
+      auth.reEnter()
         .then((data) => {
           onUserLogin(data.email);
         })
@@ -201,10 +200,11 @@ function App() {
   };
 
   const onLogin = (formData) => {
+    setIsLoaderOpen(true);
     auth.signin(formData)
       .then((data) => {
-        if (data.token) {
-          localStorage.setItem('token', data.token);
+        if (data._id) {
+          localStorage.setItem('token', data._id);
           onUserLogin(formData.email);
         }
       })
@@ -212,15 +212,26 @@ function App() {
         console.error(error);
         showErrorTooltip();
       })
+      .finally(() => {
+        setIsLoaderOpen(false);
+      })
   };
 
   const signOut = () => {
-    localStorage.removeItem('token');
-    setCurrentEmail('');
-    navigate("/sign-in", {replace: true});
+    auth.logoutUser()
+    .then(() => {
+      localStorage.removeItem('token');
+      setCurrentEmail('');
+      navigate("/sign-in", {replace: true});
+    })
+    .catch((error) => {
+      console.error(error);
+      showErrorTooltip();
+    })
   }
 
   const handleRegister = (formData) => {
+    setIsLoaderOpen(true);
     auth.signup(formData)
       .then(() => {
         setIsRegistrationSuccess(true);
@@ -230,6 +241,9 @@ function App() {
       .catch((error) => {
         console.error(error);
         showErrorTooltip();
+      })
+      .finally(() => {
+        setIsLoaderOpen(false);
       })
   };
 

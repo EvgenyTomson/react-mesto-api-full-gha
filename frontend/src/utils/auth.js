@@ -32,6 +32,7 @@ class Auth {
   signin(userData) {
     return fetch(`${this._baseUrl}/signin`, {
       method: 'POST',
+      credentials: 'include',
       headers: this._headers,
       body: JSON.stringify(userData)
     })
@@ -40,13 +41,24 @@ class Auth {
       })
   }
 
-  reEnter(jwt) {
+  reEnter() {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'GET',
-      headers: {...this._headers, "Authorization" : `Bearer ${jwt}`}
+      credentials: 'include',
+      headers: this._headers
     })
       .then(res => {
         return this._checkResponseStatus(res, 'reEnter')
+      })
+  }
+
+  logoutUser() {
+    return fetch(`${this._baseUrl}/signout`, {
+      method: 'GET',
+      credentials: 'include',
+    })
+      .then(res => {
+        return this._checkResponseStatus(res, 'logoutUser')
       })
   }
 }
