@@ -1,15 +1,55 @@
-[![Tests](https://github.com/yandex-praktikum/react-mesto-api-full-gha/actions/workflows/tests.yml/badge.svg)](https://github.com/yandex-praktikum/react-mesto-api-full-gha/actions/workflows/tests.yml)
-# react-mesto-api-full
-Репозиторий для приложения проекта `Mesto`, включающий фронтенд и бэкенд части приложения со следующими возможностями: авторизации и регистрации пользователей, операции с карточками и пользователями. Бэкенд расположите в директории `backend/`, а фронтенд - в `frontend/`.
+# Проект Mesto фронтенд + бэкенд
+Репозиторий для приложения проекта `Mesto`, включающий фронтенд и бэкенд части приложения со следующими возможностями: авторизации и регистрации пользователей, операции с карточками и пользователями. Бэкенд расположен в директории `backend/`, а фронтенд - в `frontend/`.
 
-Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке.
+## Нипользованные технологии:   
 
-Адрес репозитория: https://github.com/EvgenyTomson/react-mesto-api-full-gha
 
-## Ссылки на проект
+Backend: Node.js (express), MongoDB (mongoose), JWT (jsonwebtoken), CORS.  
 
-IP 158.160.60.154
+Frontend: React, React Router v.6, React Context.
 
-Frontend https://tomson.students.nomoredomains.monster
 
-Backend https://api.tomson.students.nomoredomains.monster
+## Запуск проекта  
+
+
+Для запуска проекта на локальной машине вам потребуется установленные Node.js, npm и MongoDB  
+
+локальный сервер должен MongoDB быть запущен на порту 27017 (или внесите изменения в конфигурацию backend\config.js).  
+
+Клонировать проект:  
+
+```bash
+git clone https://github.com/EvgenyTomson/react-mesto-api-full-gha.git  
+```
+
+Backend:  
+
+
+Установить зависимости:  
+
+```bash  
+cd backend
+npm install  
+```
+
+Запустить проект:  
+
+`npm run start` — запускает сервер  
+
+`npm run dev` — запускает сервер с hot-reload  
+
+
+Frontend:  
+
+
+Установить зависимости:  
+
+```bash  
+cd frontend
+npm install  
+```
+
+Запустить проект:  
+
+`npm run start` — запускает проект на порту 3001  
+
